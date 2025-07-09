@@ -13,11 +13,13 @@ dependencies:
     sdk: flutter
 
   eni_svc:
-    hosted: https://github.com/eniware-systems/eni_svc
-    version: ^2.0.4
+    git:
+      url: git@github.com:eniware-systems/eni_svc.git
+      ref: main
   eni_utils:
-    hosted: https://github.com/eniware-systems/eni_utils
-    version: ^2.0.1
+    git:
+      url: git@github.com:eniware-systems/eni_utils.git
+      ref: main
 
   js: ^0.7.1
 
