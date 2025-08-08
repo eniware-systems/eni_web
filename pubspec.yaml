@@ -1,6 +1,6 @@
 name: eni_web
 description: "Eniware Systems Web embedding utilities"
-version: 2.0.3
+version: 2.0.5
 homepage: https://eniware-systems.de
 publish_to: https://gitea.eniware-systems.de/api/packages/eni-flutter/pub
 
@@ -21,7 +21,7 @@ dependencies:
       url: https://github.com/eniware-systems/eni_utils.git
       ref: main
 
-  js: ^0.7.1
+  js: ^0.7.2
 
 dev_dependencies:
   flutter_test:

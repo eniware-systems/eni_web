@@ -1,3 +1,4 @@
+// ignore: deprecated_member_use
 import 'package:js/js.dart';
 
 // ignore: avoid_web_libraries_in_flutter, deprecated_member_use
@@ -22,6 +23,7 @@ Object _toJS(dynamic v) {
   return v;
 }
 
+/// Method to send Event to Web Page
 void sendAppEvent(AppEvent event) {
   _onAppEvent(_toJS(event.toJson()));
 }

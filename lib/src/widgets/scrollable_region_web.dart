@@ -8,8 +8,8 @@ import 'package:eni_web/src/svc/web_interop_service_web.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-/// A [ScrollableRegion] is a web-only-widget that can block the external scroll
-/// behaviour of the embedded web page.
+/// A [ScrollableRegion] is a web-only widget that can block the external scroll
+/// behavior of the embedded web page.
 ///
 class ScrollableRegion extends StatefulWidget {
   final Widget child;

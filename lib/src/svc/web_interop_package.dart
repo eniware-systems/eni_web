@@ -15,6 +15,7 @@ class _WebInteropPackage extends Package {
   }
 }
 
+/// Add the eni_web package integration to your Flutter project
 extension ServiceRegistryWebInteropPackageExtension on MutableServiceRegistry {
   void addWebIntegration() {
     final package = _WebInteropPackage();

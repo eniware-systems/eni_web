@@ -7,6 +7,7 @@ abstract class AppEvent {
   Map<String, dynamic> toJson();
 }
 
+/// [Event] to scroll to the end of the page
 class ScrollToEvent extends AppEvent {
   final double offset;
 
@@ -16,6 +17,7 @@ class ScrollToEvent extends AppEvent {
   Map<String, dynamic> toJson() => {"type": "scroll_to", "offset": offset};
 }
 
+/// [Event] to trigger a size change
 class SizeChangeEvent extends AppEvent {
   final Size newSize;
 
@@ -26,6 +28,7 @@ class SizeChangeEvent extends AppEvent {
       {"type": "size_change", "width": newSize.width, "height": newSize.height};
 }
 
+/// [Event] to toggle fullscreen mode
 class FullscreenEvent extends AppEvent {
   final bool enabled;
 

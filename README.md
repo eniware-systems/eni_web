@@ -1,39 +1,69 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# eni_web - Eniware Web
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+The 'eni_web' package provides a simple solution for web embedding functionality. 
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- **WebInterop**: Exposes JavaScript [Event]s from the embedding page via a broadcast [Stream].
+- **Scroll Event Suppression**: Includes a widget that blocks external scroll behavior from the embedded web page.
+- **Send Web Events**: Supports the following events: 
+  - Size Change
+  - Scroll to End of Page
+  - Fullscreen
 
-## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+## Getting Started
+To begin using `eni_web` in your project, install the package via:
+```bash
+dart pub add eni_web
+```
+
+### Basic Setup
+
+To use eni_web in your Flutter application, it's recommended to set up the `ServiceScope` and use addWebIntegration:
+
+```dart
+import 'package:eni_web/eni_web.dart';
+import 'package:eni_svc/eni_svc.dart';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(
+    ServiceScope(child: const MyApp())
+      ..addWebIntegration()
+  );
+}
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+### ScrollableRegion
+Use the [ScrollableRegion] widget in your Flutter widget tree to block scroll events from the embedded web page.
+
+### Send Event
+To send a supported Event, use the [sendAppEvent] method.
+For [SizeChangeEvent], it is recommended to call it inside the dispose method of the StatefulWidget of your App Body class.
+For [FullscreenEvent], invoke it within a WidgetsBinding.instance.addPostFrameCallback.
+
+### WebInteropService
+To listen for web events via a broadcast [Stream], get the service and attach your listener as follows:
 
 ```dart
-const like = 'sample';
+final webInteropService = context.getServiceOrNull<WebInteropService>();
+
+StreamSubscription<Event>? subscription = webInteropService.jsEvents.listen(_yourFunction);
+```
+Use a method which accepts an Event from dart:html:
+```dart
+void _yourFunction(Event event) {
+  // your code here 
+}
 ```
 
-## Additional information
+## License
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+This package is proprietary software owned by [Eniware Systems GmbH](https://eniware-systems.de). All rights reserved.
+
+Unauthorized reproduction or distribution of this package, or any portion of it, may result in severe civil and criminal penalties, and will be prosecuted to the maximum extent possible under the law.
+
+For licensing inquiries or other questions, please contact [info@eniware-systems.de](mailto:info@eniware-systems.de)

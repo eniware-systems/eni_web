@@ -5,6 +5,8 @@ import 'dart:html';
 
 import 'package:eni_svc/eni_svc.dart';
 import 'package:eni_utils/eni_utils.dart';
+
+// ignore: deprecated_member_use
 import 'package:js/js.dart';
 
 @JS('eniHandleEvent')
@@ -16,7 +18,7 @@ class WebInteropService with Service {
   final _jsEventStream = StreamController<Event>.broadcast(sync: true);
   final _logger = loggerFor("WebInteropService");
 
-  /// A [Stream] that broadcasts JavaScript [Events]s synchronously.
+  /// A [Stream] that broadcasts JavaScript [Event]s synchronously.
   Stream<Event> get jsEvents => _jsEventStream.stream;
 
   @override
